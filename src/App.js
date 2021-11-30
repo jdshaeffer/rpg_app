@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import dealDamage from './DealDamage';
+import dealDamage from './dealDamage';
 
 /* 
 	idea: 
