@@ -1,12 +1,12 @@
+import { useState } from 'react';
+import dealDamage from './DealDamage';
+
 /* 
 	idea: 
 		player upgrades mostly armor and health, is tank. 
 		enemies upgrade attack mostly, but also defense.
     so full of honor, any failure means death.
 */
-
-import { useState } from 'react';
-import DealDamage from './DealDamage';
 
 function App() {
   const DMG_CONST = 10;
@@ -22,13 +22,12 @@ function App() {
     def: 10
   });
   
-  const Player_Attack = () => {
+  const playerAttack = () => {
     // editing enemy obj, so copying, then writing.
-    let e_tmp = e;
-    e_tmp.hp -= DealDamage(DMG_CONST, p, e);
-    SetE(e_tmp);
+    let eTmp = { ...e };
+    eTmp.hp -= dealDamage(DMG_CONST, p, e);
+    SetE(eTmp);
     console.log(e.hp);
-    // e doesn't update on the page??
     SetP(p);
   };
 
@@ -50,7 +49,7 @@ function App() {
         <h3>def: {e.def}</h3>
       </div>
       <div className="buttons">
-        <button onClick={Player_Attack}>attack</button>
+        <button onClick={playerAttack}>attack</button>
       </div>
     </div>
   );
